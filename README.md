@@ -64,3 +64,10 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+#### COMANDOS UTILES
+## RESTAURAR BASE DE DATOS (migraciones y seeders)
+php artisan migrate:refresh --seed
+## INICIAR SERVIDOR
+php artisan serve
