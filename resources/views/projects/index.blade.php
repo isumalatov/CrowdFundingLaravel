@@ -27,7 +27,6 @@
                     <td>{{ $project->completion_date ? $project->completion_date->format('Y-m-d') : 'N/A' }}</td>
                     <td>{{ $project->required_funds }}</td>
                     <td>
-                        <a href="{{ route('projects.show', $project->id) }}" class="btn btn-info">Ver</a>
                         <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-primary">Editar</a>
                         <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline-block;">
                             @csrf
