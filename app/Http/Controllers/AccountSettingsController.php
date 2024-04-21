@@ -37,6 +37,7 @@ class AccountSettingsController extends Controller
         $user->save();
 
         // Redirigir con un mensaje de éxito
+        return view('settings.update');
 
     }
     // Actualiza la información del perfil del usuario autenticado
