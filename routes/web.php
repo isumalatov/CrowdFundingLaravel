@@ -8,5 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/accountsettings', [AccountSettingsController::class, 'index'])->name('accountsettings.index');
+//Route::get('/accountsettings', [AccountSettingsController::class, 'index'])->name('accountsettings.index');
+Route::resource('/accountsettings', AccountSettingsController::class);
 
