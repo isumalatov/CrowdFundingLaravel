@@ -7,7 +7,7 @@
 @section('content')
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <h1>Pantalla de Inicio</h1>
 </body>
 </html>
 @endsection
