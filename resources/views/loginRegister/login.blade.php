@@ -1,8 +1,6 @@
 {{-- resources/views/loginRegister/login.blade.php --}}
 
-@extends('layouts.app')
-
-@section('content')
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 <div class="container">
     <h2>Iniciar Sesión</h2>
     
@@ -49,5 +47,5 @@
         </div>
     </form>
 </div>
-@endsection
+
 

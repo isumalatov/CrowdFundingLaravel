@@ -31,9 +31,5 @@
         <button type="submit" class="btn btn-primary">Guardar</button>
         <button type="reset" class="btn btn-primary">Borrar</button>
         <a href="{{ route('projects.index') }}" class="btn btn-primary mb-3">Volver</a>
-
-        <button type="reset" class="btn btn-primary">Borrar</button>
-        <a href="{{ route('projects.index') }}" class="btn btn-primary mb-3">Volver</a>
-
     </form>
 @endsection

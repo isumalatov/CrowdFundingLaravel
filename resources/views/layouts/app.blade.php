@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Proyecto Laravel</title>
-    <!-- Agrega tus enlaces a estilos CSS, scripts, etc., aquí -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
     
@@ -13,7 +13,9 @@
             
             <a href="/dashboard">Dashboard</a> |
             <a href="/projects">Projects</a> |
-            <a href="/contributions">Contributions</a>
+            <a href="/contributions">Contributions</a> |
+            <a href="/settings">Settings</a> |
+            <a href="/logout">Log out</a>
             <!-- Agrega más enlaces según sea necesario -->
         </nav>
     

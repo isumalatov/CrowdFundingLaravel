@@ -1,0 +1,81 @@
+* Estilo general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #b87db3; /* Fondo de la sección principal */
+}
+
+/* Estilo del header */
+header {
+    background-color: #8e44ad; /* Color lila */
+    color: white;
+    position: fixed; /* Posicionamiento fijo */
+    top: 0; /* Desde la parte superior */
+    bottom: 0; /* Hasta la parte inferior para llenar la altura */
+    left: 0; /* Alineado a la izquierda */
+    width: 200px; /* Ancho del header */
+    display: flex;
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    justify-content: start; /* Alineación al inicio para empezar desde arriba */
+}
+
+/* Estilo de los enlaces */
+nav a {
+    color: white;
+    display: block; /* Los enlaces se muestran como bloques, uno debajo del otro */
+    text-decoration: none;
+    margin: 10px 0; /* Espacio entre los enlaces */
+    padding: 10px 0; /* Espaciado vertical */
+    text-align: center; /* Texto centrado */
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #a569bd; /* Un tono más claro para el efecto hover */
+}
+
+/* Estilo del contenido principal */
+main {
+    margin-left: 200px; /* Deja espacio para el header */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    align-items: center; /* Centra horizontalmente en el espacio restante */
+}
+
+/* Estilo para el título de la sección */
+.section-title {
+    color: white;
+    margin: 20px 0; /* Espacio antes y después del título */
+    font-size: 1.5em; /* Tamaño del texto */
+}
+
+/* Estilo para el campo de búsqueda */
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Espacio debajo de la caja de búsqueda */
+}
+
+.search-box input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px; /* Espacio entre el campo de texto y el botón */
+}
+
+.search-box button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #3c8d9b; /* Color oscuro para el botón */
+    color: white;
+}
