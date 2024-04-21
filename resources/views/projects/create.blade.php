@@ -15,7 +15,7 @@
             <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="publication_date" class="form-label">Fecha de publicacion </label>
+            <label for="publication_date" class="form-label">Fecha de publicacion  </label>
             <input type="date" class="form-control" id="publication_date" name="publication_date" nullable></input>
         </div>
         <div class="mb-3">
