@@ -9,7 +9,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(8);
         return view('projects.index', compact('projects'));
     }
 
@@ -21,15 +21,18 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'publication_date' => 'required|date',
-            'completion_date' => 'required|date',
-            'required_funds' => 'required|numeric',
+            'publication_date' => 'nullable|date',
+            'completion_date' => 'nullable|date',
+            'required_funds' => 'nullable|numeric',
         ]);
-
-        Project::create($request->all());
+        $project = new Project($request->all());
+        // Asignar el propio user_id 
+        //$project->user_id = auth()->user()->id;
+        //Reemplazo hasta que se haga la parte de usuario y authentication
+        $project->user_id = 1;
+        $project->save();
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully');
     }
@@ -42,12 +45,11 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $request->validate([
-            'user_id' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'publication_date' => 'required|date',
-            'completion_date' => 'required|date',
-            'required_funds' => 'required|numeric',
+            'publication_date' => 'nullable|date',
+            'completion_date' => 'nullable|date',
+            'required_funds' => 'nullable|numeric',
         ]);
 
         $project->update($request->all());
