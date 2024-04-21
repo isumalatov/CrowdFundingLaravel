@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <h1>Detalles del Proyecto</h1>
 
     <div>

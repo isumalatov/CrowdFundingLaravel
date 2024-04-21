@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <h1>Crear Proyecto</h1>
 
     <form action="{{ route('projects.store') }}" method="POST">
