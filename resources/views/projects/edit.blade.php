@@ -12,8 +12,22 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descripción</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required>{{ $project->description }}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="5" required>{{ $project->description }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="publication_date" class="form-label">Fecha de publicación (opcional)</label>
+            <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ $project->publication_date ? $project->publication_date->format('Y-m-d') : '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="completion_date" class="form-label">Fecha a finalizar (opcional)</label>
+            <input type="date" class="form-control" id="completion_date" name="completion_date" value="{{ $project->completion_date ? $project->completion_date->format('Y-m-d') : '' }}">
+        </div>
+        <div class="mb-3">
+            <label for="required_funds" class="form-label">Fondos necesarios (opcional)</label>
+            <input type="number" class="form-control" id="required_funds" name="required_funds" value="{{ $project->required_funds }}">
         </div>
         <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="reset" class="btn btn-primary">Borrar</button>
+        <a href="{{ route('projects.index') }}" class="btn btn-primary mb-3">Volver</a>
     </form>
 @endsection
