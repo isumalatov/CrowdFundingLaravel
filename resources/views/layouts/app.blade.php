@@ -8,7 +8,15 @@
 <body>
     
     <header>
-        <!-- Contenido del encabezado -->
+    
+        <nav>
+            
+            <a href="/dashboard">Dashboard</a> |
+            <a href="/projects">Projects</a> |
+            <a href="/contributions">Contributions</a>
+            <!-- Agrega más enlaces según sea necesario -->
+        </nav>
+    
     </header>
 
     <main>
