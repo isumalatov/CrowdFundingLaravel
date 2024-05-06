@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -29,7 +30,7 @@ class ProjectController extends Controller
         ]);
         $project = new Project($request->all());
         // Asignar el propio user_id 
-        //$project->user_id = auth()->user()->id;
+        //$project->user_id = Auth::id();
         //Reemplazo hasta que se haga la parte de usuario y authentication
         $project->user_id = 1;
         $project->save();
@@ -63,4 +64,11 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
     }
+
+    public function show(Project $project)
+    {
+        $project->load('contributions.user'); 
+        return view('projects.show', compact('project'));
+    }
+    
 }
