@@ -21,7 +21,7 @@
             @foreach ($projects as $project)
                 <tr>
                     <td>{{ $project->user_id }}</td>
-                    <td>{{ $project->title }}</td>
+                    <td><a href="{{ route('projects.show', $project->id) }}">{{ $project->title }}</a></td>
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->publication_date ? $project->publication_date->format('Y-m-d') : 'N/A' }}</td>
                     <td>{{ $project->completion_date ? $project->completion_date->format('Y-m-d') : 'N/A' }}</td>
