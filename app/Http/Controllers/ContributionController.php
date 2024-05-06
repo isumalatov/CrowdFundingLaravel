@@ -47,7 +47,7 @@ class ContributionController extends Controller
             'user_id' => $user_id,
             'project_id' => $request->project_id,
             'amount' => $request->amount,
-            'contribution_date' => now()->toDateString(),
+            'contribution_date' => now(),
         ]);
 
         return redirect()->route('projects.show', $request->project_id)->with('success', 'Contribución creada exitosamente');
