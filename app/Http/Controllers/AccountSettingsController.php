@@ -19,7 +19,7 @@ class AccountSettingsController extends Controller
 
     public function update(Request $request)
     {
-        $user = new User($request->all());
+        $user = Auth::user();
         
         // Validar la información del formulario
         $data = $request->validate([
