@@ -7,7 +7,7 @@
 @section('content')
 </head>
 <body>
-    <h1>Pantalla de Inicio</h1>
+    <h1>Hola de nuevo {{Auth::user()->name}}</h1>
 </body>
 </html>
 @endsection
