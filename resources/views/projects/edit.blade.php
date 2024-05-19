@@ -28,6 +28,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <!--<button type="reset" class="btn btn-primary">Borrar</button>-->
-        <a href="{{ route('projects.index') }}" class="btn btn-primary mb-3">Volver</a>
+        <a href="{{ route('projects.my') }}" class="btn btn-primary mb-3">Volver</a>
     </form>
 @endsection
