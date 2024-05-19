@@ -26,6 +26,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'phone' => 'required|string|max:15|regex:/^[0-9]{9,15}$/' // Añadido validación para phone
         ]);
 
         // Si la validación falla, redirigir de vuelta con los errores
@@ -40,6 +41,8 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Asegúrate de hashear la contraseña
+            'phone' => $request->phone,
+            'bio' => $request->bio ?? null 
         ]);
 
         // Redirigir a la página que deseas después del registro
