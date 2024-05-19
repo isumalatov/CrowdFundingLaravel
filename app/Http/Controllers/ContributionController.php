@@ -39,9 +39,9 @@ class ContributionController extends Controller
         ]);
 
         // Obtener el ID del usuario autenticado
-        //$user_id = Auth::id();
+        $user_id = Auth::id();
         //Reemplazo mientras no esta hecho
-        $user_id = 1;
+        //$user_id = 1;
 
         Contribution::create([
             'user_id' => $user_id,
