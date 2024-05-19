@@ -9,6 +9,7 @@
         <p><strong>Fecha de Publicación:</strong> {{ $project->publication_date ? $project->publication_date->format('Y-m-d') : 'N/A' }}</p>
         <p><strong>Fecha a Finalizar:</strong> {{ $project->completion_date ? $project->completion_date->format('Y-m-d') : 'N/A' }}</p>
         <p><strong>Fondos Necesarios:</strong> {{ $project->required_funds }}</p>
+        <p><strong>Creador:</strong> {{ $project->user_id->name}}</p>
     </div>
 
     <div>

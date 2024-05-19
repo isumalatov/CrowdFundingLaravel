@@ -43,7 +43,7 @@ class UserController extends Controller
         ]);
 
         // Redirigir a la página que deseas después del registro
-        return redirect()->route('login'); // Asegúrate de tener una ruta nombrada 'home'
+        return redirect()->route('login'); 
     }
 
     public function login(Request $request)

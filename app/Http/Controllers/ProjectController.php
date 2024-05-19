@@ -30,9 +30,9 @@ class ProjectController extends Controller
         ]);
         $project = new Project($request->all());
         // Asignar el propio user_id 
-        //$project->user_id = Auth::id();
+        $project->user_id = Auth::id();
         //Reemplazo hasta que se haga la parte de usuario y authentication
-        $project->user_id = 1;
+        //$project->user_id = 1;
         $project->save();
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully');
