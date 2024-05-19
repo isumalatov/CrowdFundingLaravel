@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::paginate(8);
+        $projects = Project::with('user')->paginate(8);
         return view('projects.index', compact('projects'));
     }
 
@@ -35,7 +35,7 @@ class ProjectController extends Controller
         //$project->user_id = 1;
         $project->save();
 
-        return redirect()->route('projects.index')->with('success', 'Project created successfully');
+        return redirect()->route('projects.my')->with('success', 'Project created successfully');
     }
 
     public function edit(Project $project)
@@ -55,20 +55,28 @@ class ProjectController extends Controller
 
         $project->update($request->all());
 
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully');
+        return redirect()->route('projects.my')->with('success', 'Project updated successfully');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('projects.index')->with('success', 'Project deleted successfully');
+        return redirect()->route('projects.my')->with('success', 'Project deleted successfully');
     }
 
     public function show(Project $project)
     {
         $project->load('contributions.user'); 
         return view('projects.show', compact('project'));
+    }
+
+    //My Own Proyects
+    public function myProjects()
+    {
+        $userId = Auth::id();
+        $projects = Project::where('user_id', $userId)->paginate(10);
+        return view('projects.my_own_projects', compact('projects'));
     }
     
 }
