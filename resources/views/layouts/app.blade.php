@@ -8,18 +8,14 @@
 <body>
     
     <header>
-    
         <nav>
-            
             <a href="/dashboard">Dashboard</a> |
             <a href="/projects">Projects</a> |
             <a href="/contributions">Contributions</a> |
             <a href="{{ route('projects.my') }}" class="btn btn-primary">My Projects</a> |
             <a href="/settings">Settings</a> |
             <a href="/logout">Log out</a>
-            <!-- Agrega más enlaces según sea necesario -->
         </nav>
-    
     </header>
 
     <main>
@@ -30,5 +26,8 @@
         <!-- Pie de página -->
     </footer>
 
+    <!-- Incluir scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    @stack('scripts')
 </body>
 </html>
