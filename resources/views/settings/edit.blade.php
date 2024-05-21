@@ -41,7 +41,19 @@
             <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
         </div>
 
-        {{-- Campo para la contraseña nueva (opcional) --}}
+        {{-- Campo para el teléfono móvil --}}
+        <div class="mb-3">
+            <label for="phone" class="form-label">Teléfono Móvil:</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $user->phone) }}" required>
+        </div>
+
+        {{-- Campo para la biografía --}}
+        <div class="mb-3">
+            <label for="bio" class="form-label">Biografía:</label>
+            <textarea class="form-control" id="bio" name="bio" rows="3">{{ old('bio', $user->bio) }}</textarea>
+        </div>
+
+        {{-- Campo para la nueva contraseña (opcional) --}}
         <div class="mb-3">
             <label for="password" class="form-label">Nueva Contraseña (introducir contraseña actual si no desea cambiarla):</label>
             <input type="password" class="form-control" id="password" name="password">
