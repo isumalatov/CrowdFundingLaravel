@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Project;
+use App\Models\Reward;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -76,5 +78,14 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function myActivity()
+    {
+        $user = User::find(Auth::id());
+        $projects = $user->projects()->paginate(10);
+        $rewards = $user->rewards()->paginate(10);
+
+        return view('my_activity', compact('projects', 'rewards'));
     }
 }

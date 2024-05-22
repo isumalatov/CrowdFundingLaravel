@@ -16,8 +16,8 @@ Route::get('/dashboard', function () {
 
 // Montamos rutas para Projectos
 Route::resource('projects', ProjectController::class);
-// Ruta para "My Own Projects"
-Route::get('/my-projects', [ProjectController::class, 'myProjects'])->middleware('auth')->name('projects.my');
+// Ruta para "My Activity"
+Route::get('/my_activity', [UserController::class, 'myActivity'])->name('my_activity');
 
 //contribuciones
 Route::resource('/contributions', ContributionController::class);

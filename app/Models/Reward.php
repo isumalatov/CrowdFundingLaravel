@@ -22,8 +22,14 @@ class Reward extends Model
         'stock',
     ];
 
-    public function Project()
+    public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'reward_user')
+                    ->withPivot('amount', 'contribution_date')
+                    ->withTimestamps();
     }
 }

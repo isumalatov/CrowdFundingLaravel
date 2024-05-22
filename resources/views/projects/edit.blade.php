@@ -46,7 +46,7 @@
         <button type="button" id="add-reward" class="btn btn-secondary">Añadir Recompensa</button>
 
         <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
-        <a href="{{ route('projects.my') }}" class="btn btn-secondary mb-3">Volver</a>
+        <a href="/my_activity" class="btn btn-secondary mb-3">Volver</a>
     </form>
 @endsection
 
