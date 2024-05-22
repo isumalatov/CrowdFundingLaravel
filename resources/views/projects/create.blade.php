@@ -44,7 +44,7 @@
 
         <button type="submit" class="btn btn-primary mt-3">Guardar</button>
         <button type="reset" class="btn btn-secondary mt-3">Borrar</button>
-        <a href="{{ route('projects.my') }}" class="btn btn-secondary mb-3">Volver</a>
+        <a href="/my_activity" class="btn btn-secondary mb-3">Volver</a>
     </form>
 @endsection
 

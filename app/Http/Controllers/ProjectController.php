@@ -44,7 +44,7 @@ class ProjectController extends Controller
                 $reward->save();
             }
         }
-        return redirect()->route('projects.my')->with('success', 'Project created successfully');
+        return redirect()->route('my_activity')->with('success', 'Project created successfully');
     }
 
     public function edit(Project $project)
@@ -77,27 +77,19 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route('projects.my')->with('success', 'Project updated successfully');
+        return redirect()->route('my_activity')->with('success', 'Project updated successfully');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('projects.my')->with('success', 'Project deleted successfully');
+        return redirect()->route('my_activity')->with('success', 'Project deleted successfully');
     }
 
     public function show(Project $project)
     {
         $project->load('contributions.user', 'rewards'); 
         return view('projects.show', compact('project'));
-    }
-
-    //My Own Proyects
-    public function myProjects()
-    {
-        $userId = Auth::id();
-        $projects = Project::where('user_id', $userId)->paginate(10);
-        return view('projects.my_own_projects', compact('projects'));
     }
 }

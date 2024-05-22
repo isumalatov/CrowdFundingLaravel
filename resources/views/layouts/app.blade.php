@@ -12,7 +12,7 @@
             <a href="/dashboard">Dashboard</a> |
             <a href="/projects">Projects</a> |
             <a href="/contributions">Contributions</a> |
-            <a href="{{ route('projects.my') }}" class="btn btn-primary">My Projects</a> |
+            <a href="/my_activity">My Activity</a> |
             <a href="/settings">Settings</a> |
             <a href="/logout">Log out</a>
         </nav>
