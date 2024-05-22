@@ -37,6 +37,7 @@
                 <input type="number" class="form-control" id="rewards_0_required_funds" name="rewards[0][required_funds]" required>
                 <label for="rewards_0_stock" class="form-label">Stock</label>
                 <input type="number" class="form-control" id="rewards_0_stock" name="rewards[0][stock]" required>
+                <button type="button" class="btn btn-danger mt-2 remove-reward">Eliminar Recompensa</button>
             </div>
         </div>
         <button type="button" id="add-reward" class="btn btn-secondary">Añadir Recompensa</button>
@@ -62,9 +63,16 @@
                 <input type="number" class="form-control" id="rewards_${index}_required_funds" name="rewards[${index}][required_funds]" required>
                 <label for="rewards_${index}_stock" class="form-label">Stock</label>
                 <input type="number" class="form-control" id="rewards_${index}_stock" name="rewards[${index}][stock]" required>
+                <button type="button" class="btn btn-danger mt-2 remove-reward">Eliminar Recompensa</button>
             </div>
         `;
         rewardsContainer.insertAdjacentHTML('beforeend', newReward);
+    });
+
+    document.getElementById('rewards-container').addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('remove-reward')) {
+            e.target.closest('.reward').remove();
+        }
     });
 </script>
 @endpush

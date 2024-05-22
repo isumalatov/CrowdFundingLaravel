@@ -37,12 +37,13 @@ class ProjectController extends Controller
         $project->save();
 
         // Guardar las recompensas asociadas
-        foreach ($request->rewards as $rewardData) {
-            $reward = new Reward($rewardData);
-            $reward->project_id = $project->id;
-            $reward->save();
+        if($request->has('rewards')){
+            foreach ($request->rewards as $rewardData) {
+                $reward = new Reward($rewardData);
+                $reward->project_id = $project->id;
+                $reward->save();
+            }
         }
-
         return redirect()->route('projects.my')->with('success', 'Project created successfully');
     }
 
@@ -68,10 +69,12 @@ class ProjectController extends Controller
 
         // Actualizar las recompensas asociadas
         $project->rewards()->delete(); // Borrar las recompensas existentes
-        foreach ($request->rewards as $rewardData) {
-            $reward = new Reward($rewardData);
-            $reward->project_id = $project->id;
-            $reward->save();
+        if($request->has('rewards')){
+            foreach ($request->rewards as $rewardData) {
+                $reward = new Reward($rewardData);
+                $reward->project_id = $project->id;
+                $reward->save();
+            }
         }
 
         return redirect()->route('projects.my')->with('success', 'Project updated successfully');

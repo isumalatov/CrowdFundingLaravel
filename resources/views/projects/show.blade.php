@@ -5,11 +5,29 @@
 
     <div>
         <h2>{{ $project->title }}</h2>
-        <p><strong>Creador:</strong> {{ $project->user->name}}</p>
+        <p><strong>Creador:</strong> {{ $project->user->name }}</p>
         <p><strong>Descripción:</strong> {{ $project->description }}</p>
         <p><strong>Fecha de Publicación:</strong> {{ $project->publication_date ? $project->publication_date->format('Y-m-d') : 'N/A' }}</p>
         <p><strong>Fecha a Finalizar:</strong> {{ $project->completion_date ? $project->completion_date->format('Y-m-d') : 'N/A' }}</p>
         <p><strong>Fondos Necesarios:</strong> {{ $project->required_funds }}</p>
+    </div>
+
+    <div>
+        <h2>Recompensas</h2>
+        @if ($project->rewards->count() > 0)
+            <ul>
+                @foreach ($project->rewards as $reward)
+                    <li>
+                        <h3>{{ $reward->title }}</h3>
+                        <p><strong>Descripción:</strong> {{ $reward->description }}</p>
+                        <p><strong>Fondos Requeridos:</strong> {{ $reward->required_funds }}</p>
+                        <p><strong>Stock Restante:</strong> {{ $reward->stock }}</p>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <p>No hay recompensas asociadas a este proyecto.</p>
+        @endif
     </div>
 
     <div>
