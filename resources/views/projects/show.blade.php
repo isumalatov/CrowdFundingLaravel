@@ -44,9 +44,41 @@
         @endif
     </div>
 
+
+    <!-- Botones -->
     <div>
-        <!-- Botones -->
         <a href="{{ route('contributions.create', ['project_id' => $project->id]) }}" class="btn btn-success">Contribuir</a>
+    </div>
+
+    <div>
+        <h2>Comentarios</h2>
+        @if ($project->contributions->count() > 0)
+            <ul>
+                @foreach ($project->comments as $comment)
+                    <li>{{ $comment->user->name }}: {{ $comment->text }}</li>
+                @endforeach
+            </ul>
+        @else
+            <p>No hay comentarios en este proyecto.</p>
+        @endif
+        
+        <div>
+            <h3>Añadir un comentario</h3>
+            <form action="{{ route('comments.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="project_id" value="{{ $project->id }}">
+                <div class="form-group">
+                    <label for="comment">Comentario:</label>
+                    <textarea name="text" id="comment" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar comentario</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <div>
         <a href="{{ route('projects.index') }}" class="btn btn-primary">Volver</a>
     </div>
+
 @endsection
