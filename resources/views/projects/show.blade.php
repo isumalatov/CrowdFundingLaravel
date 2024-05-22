@@ -52,7 +52,7 @@
 
     <div>
         <h2>Comentarios</h2>
-        @if ($project->contributions->count() > 0)
+        @if ($project->comments->count() > 0)
             <ul>
                 @foreach ($project->comments as $comment)
                     <li>{{ $comment->user->name }}: {{ $comment->text }}</li>
