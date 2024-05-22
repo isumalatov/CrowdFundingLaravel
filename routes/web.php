@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
+
 use App\Http\Controllers\AccountSettingsController;
 
 Route::get('/', function () {
@@ -18,6 +20,7 @@ Route::get('/dashboard', function () {
 Route::resource('projects', ProjectController::class);
 // Ruta para "My Activity"
 Route::get('/my_activity', [UserController::class, 'myActivity'])->name('my_activity');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 //contribuciones
 Route::resource('/contributions', ContributionController::class);
