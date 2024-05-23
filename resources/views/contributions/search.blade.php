@@ -23,7 +23,12 @@
 
 @if (!$found)
     <div>
-        <p>no existe ninguna contribucion con esa precio: {{  $precio  }} añade tambien la hora si no lo has hecho.</p>
+        <p>No existe ninguna contribucion con esas carateristicas.</p>
     </div>
+    <form method="GET" action="{{ URL::previous() }}">
+    @csrf
+    <button type="submit">Volver a contribuciones</button>
+    </form>
+
 @endif
 @endsection
