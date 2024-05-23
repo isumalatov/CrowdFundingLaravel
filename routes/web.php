@@ -5,8 +5,14 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
-
 use App\Http\Controllers\AccountSettingsController;
+use App\Http\Controllers\PaymentController;
+
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+
+
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 Route::get('/', function () {
     return view('loginRegister.login');

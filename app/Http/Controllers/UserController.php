@@ -44,7 +44,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password), // Asegúrate de hashear la contraseña
             'phone' => $request->phone,
-            'bio' => $request->bio ?? null 
+            'bio' => $request->bio ?? null,
+            'isSuper' => false
         ]);
 
         // Redirigir a la página que deseas después del registro

@@ -3,6 +3,17 @@
 @section('content')
     <h1>Crear Proyecto</h1>
 
+    {{-- Mostrar errores de validación --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('projects.store') }}" method="POST">
         @csrf
         <div class="mb-3">
@@ -15,11 +26,11 @@
         </div>
         <div class="mb-3">
             <label for="publication_date" class="form-label">Fecha de publicación</label>
-            <input type="date" class="form-control" id="publication_date" name="publication_date">
+            <input type="date" class="form-control" id="publication_date" name="publication_date" min="{{ date('Y-m-d') }}" required>
         </div>
         <div class="mb-3">
             <label for="completion_date" class="form-label">Fecha a finalizar</label>
-            <input type="date" class="form-control" id="completion_date" name="completion_date">
+            <input type="date" class="form-control" id="completion_date" name="completion_date" required>
         </div>
         <div class="mb-3">
             <label for="required_funds" class="form-label">Fondos necesarios</label>
@@ -76,3 +87,4 @@
     });
 </script>
 @endpush
+

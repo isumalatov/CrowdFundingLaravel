@@ -9,15 +9,11 @@ class Comment extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'user_id',
         'project_id',
         'text',
+        'parent_id', // Añadir parent_id al rellenable
     ];
 
     protected $casts = [
@@ -33,13 +29,18 @@ class Comment extends Model
         });
     }
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function Project()
+    public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }

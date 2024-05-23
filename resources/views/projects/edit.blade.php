@@ -3,6 +3,17 @@
 @section('content')
     <h1>Editar Proyecto</h1>
 
+    {{-- Mostrar errores de validación --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('projects.update', $project->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -16,11 +27,11 @@
         </div>
         <div class="mb-3">
             <label for="publication_date" class="form-label">Fecha de publicación</label>
-            <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ $project->publication_date ? $project->publication_date->format('Y-m-d') : '' }}">
+            <input type="date" class="form-control" id="publication_date" name="publication_date" value="{{ $project->publication_date ? $project->publication_date->format('Y-m-d') : '' }}" required>
         </div>
         <div class="mb-3">
             <label for="completion_date" class="form-label">Fecha a finalizar</label>
-            <input type="date" class="form-control" id="completion_date" name="completion_date" value="{{ $project->completion_date ? $project->completion_date->format('Y-m-d') : '' }}">
+            <input type="date" class="form-control" id="completion_date" name="completion_date" value="{{ $project->completion_date ? $project->completion_date->format('Y-m-d') : '' }}" required>
         </div>
         <div class="mb-3">
             <label for="required_funds" class="form-label">Fondos necesarios</label>

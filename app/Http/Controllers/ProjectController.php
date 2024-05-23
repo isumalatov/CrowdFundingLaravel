@@ -25,6 +25,8 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'publication_date' => 'required|date|after_or_equal:today',
+            'completion_date' => 'required|date|after_or_equal:publication_date|before_or_equal:'.now()->addMonths(3)->format('Y-m-d'),
             'required_funds' => 'nullable|numeric',
             'rewards.*.title' => 'required|string|max:255',
             'rewards.*.description' => 'required|string',
@@ -36,20 +38,20 @@ class ProjectController extends Controller
         $project->user_id = Auth::id();
         $project->save();
 
-        // Guardar las recompensas asociadas
-        if($request->has('rewards')){
+        if ($request->has('rewards')) {
             foreach ($request->rewards as $rewardData) {
                 $reward = new Reward($rewardData);
                 $reward->project_id = $project->id;
                 $reward->save();
             }
         }
+
         return redirect()->route('my_activity')->with('success', 'Project created successfully');
     }
 
     public function edit(Project $project)
     {
-        $project->load('rewards'); // Cargar las recompensas del proyecto
+        $project->load('rewards');
         return view('projects.edit', compact('project'));
     }
 
@@ -58,6 +60,8 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'publication_date' => 'required|date|after_or_equal:today',
+            'completion_date' => 'required|date|after_or_equal:publication_date|before_or_equal:'.now()->addMonths(3)->format('Y-m-d'),
             'required_funds' => 'nullable|numeric',
             'rewards.*.title' => 'required|string|max:255',
             'rewards.*.description' => 'required|string',
@@ -67,9 +71,8 @@ class ProjectController extends Controller
 
         $project->update($request->all());
 
-        // Actualizar las recompensas asociadas
-        $project->rewards()->delete(); // Borrar las recompensas existentes
-        if($request->has('rewards')){
+        $project->rewards()->delete();
+        if ($request->has('rewards')) {
             foreach ($request->rewards as $rewardData) {
                 $reward = new Reward($rewardData);
                 $reward->project_id = $project->id;
@@ -83,13 +86,12 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-
         return redirect()->route('my_activity')->with('success', 'Project deleted successfully');
     }
 
     public function show(Project $project)
     {
-        $project->load('contributions.user', 'rewards'); 
+        $project->load('contributions.user', 'rewards');
         return view('projects.show', compact('project'));
     }
 }
