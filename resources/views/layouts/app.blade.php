@@ -9,11 +9,11 @@
     
     <header>
         <nav>
-            <a href="/dashboard">Dashboard</a> |
-            <a href="/projects">Projects</a> |
-            <a href="/contributions">Contributions</a> |
-            <a href="/my_activity">My Activity</a> |
-            <a href="/settings">Settings</a> |
+            <a href="/dashboard">Dashboard</a>
+            <a href="/projects">Projects</a>
+            <a href="/contributions">Contributions</a>
+            <a href="/my_activity">My Activity</a>
+            <a href="/settings">Settings</a>
             <a href="/logout">Log out</a>
         </nav>
     </header>

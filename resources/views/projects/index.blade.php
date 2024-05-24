@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="project-container">
         <h1>Lista de Proyectos</h1>
+        <!-- Botón para crear un nuevo proyecto, ajustado para no solapar -->
+        <a href="{{ route('projects.create') }}" class="btn btn-success create-project-button">Crear Proyecto</a>
 
-        <!-- Botón para crear un nuevo proyecto -->
-        <a href="{{ route('projects.create') }}" class="btn btn-success mb-3">Crear Proyecto</a>
-
-        <table class="table table-bordered">
+        <table class="table project-table">
             <thead>
                 <tr>
                     <th>Usuario</th>
@@ -43,8 +42,5 @@
                 @endforeach
             </tbody>
         </table>
-
-        <!-- Enlaces de paginación -->
-        {{ $projects->links() }}
     </div>
 @endsection
