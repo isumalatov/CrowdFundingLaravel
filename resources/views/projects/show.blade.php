@@ -57,11 +57,11 @@
     </div>
 
     <!-- Botones -->
-    <div>
+    <div class="contribute-button">
         @if ($project->completion_date && $project->completion_date < now())
             <p class="text-danger">Este proyecto ha finalizado y no se pueden realizar más contribuciones.</p>
         @else
-            <a href="{{ route('contributions.create', ['project_id' => $project->id]) }}" class="btn btn-success">Contribuir</a>
+            <a href="{{ route('contributions.create', ['project_id' => $project->id]) }}" class="btn btn-contribute">Contribuir</a>
         @endif
     </div>
 
