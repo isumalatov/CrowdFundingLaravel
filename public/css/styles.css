@@ -445,3 +445,41 @@ main {
     right: 120px; /* Espacio desde la parte derecha del contenedor para no solapar con la barra lateral */
     z-index: 10; /* Asegura que el botón se sitúe sobre otros elementos si es necesario */
 }
+
+.dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    color: #083358;
+}
+
+.dashboard-title {
+    color: #0d47a1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navigation-links {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navigation-link {
+    margin-right: 10px;
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.navigation-link:hover {
+    text-decoration: underline;
+    color: #1565c0;
+}
+
+.dashboard-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}
