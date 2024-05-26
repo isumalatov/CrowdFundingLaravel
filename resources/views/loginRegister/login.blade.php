@@ -48,4 +48,34 @@
     </form>
 </div>
 
+<div class="container mt-5">
+    <h2>About Us</h2>
+    <p>
+        Bienvenido a nuestra plataforma. Somos una empresa dedicada a conectar personas con proyectos emocionantes. 
+        Nuestro objetivo es facilitar el financiamiento colectivo y ayudar a los creadores a hacer realidad sus ideas.
+        A través de nuestra plataforma, los usuarios pueden descubrir proyectos innovadores y contribuir a su desarrollo.
+        Únete a nuestra comunidad y sé parte del cambio.
+    </p>
+</div>
 
+<div class="container mt-5">
+    <h2>Contáctanos</h2>
+    <p>
+        Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos. Estamos aquí para ayudarte.
+    </p>
+    <form>
+        <div class="mb-3">
+            <label for="contact_name" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="contact_name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact_email" class="form-label">Correo Electrónico:</label>
+            <input type="email" class="form-control" id="contact_email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="contact_message" class="form-label">Mensaje:</label>
+            <textarea class="form-control" id="contact_message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+    </form>
+</div>
