@@ -18,8 +18,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone',
+        'bio',
         'email',
         'password',
+        'isSuper',
     ];
 
     /**
@@ -44,23 +47,25 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    Public function Profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
 
-    public function Projects()
+    public function projects()
     {
         return $this->hasMany(Project::class);
     }
 
-    public function Contributions()
+    public function contributions()
     {
         return $this->hasMany(Contribution::class);
     }
 
-    public function Comments()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function rewards()
+    {
+        return $this->belongsToMany(Reward::class, 'reward_user')
+                    ->withPivot('amount', 'contribution_date')
+                    ->withTimestamps();
     }
 }

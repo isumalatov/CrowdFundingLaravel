@@ -4,7 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AccountSettingsController;
+use App\Http\Controllers\PaymentController;
+
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+Route::post('/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+
+
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 Route::get('/', function () {
     return view('loginRegister.login');
@@ -16,8 +24,9 @@ Route::get('/dashboard', function () {
 
 // Montamos rutas para Projectos
 Route::resource('projects', ProjectController::class);
-// Ruta para "My Own Projects"
-Route::get('/my-projects', [ProjectController::class, 'myProjects'])->middleware('auth')->name('projects.my');
+// Ruta para "My Activity"
+Route::get('/my_activity', [UserController::class, 'myActivity'])->name('my_activity');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 //contribuciones
 Route::resource('/contributions', ContributionController::class);

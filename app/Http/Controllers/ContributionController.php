@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contribution;
+use App\Models\Project;
+use App\Models\Reward;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ContributionController extends Controller
 {
@@ -47,21 +50,46 @@ class ContributionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'project_id' => 'required',
+            'project_id' => 'required|exists:projects,id',
             'amount' => 'required|numeric',
         ]);
 
         // Obtener el ID del usuario autenticado
-        $user_id = Auth::id();
+        //$user_id = Auth::id();
         //Reemplazo mientras no esta hecho
         //$user_id = 1;
 
-        Contribution::create([
-            'user_id' => $user_id,
-            'project_id' => $request->project_id,
-            'amount' => $request->amount,
-            'contribution_date' => now(),
-        ]);
+        DB::transaction(function () use ($request) {
+            // Creamos la contribución
+            $contribution = new Contribution();
+            $contribution->amount = $request->input('amount');
+            $contribution->project_id = $request->input('project_id');
+            $contribution->user_id = Auth::id();
+            $contribution->contribution_date = now();
+            $contribution->save();
+
+            // Actualizamos stock y vinculamos al user
+            $rewards = $contribution->project->rewards()
+                ->where('required_funds', '<=', $contribution->amount)
+                ->where('stock', '>', 0)
+                ->get();
+
+            foreach ($rewards as $reward) {
+                if ($reward->stock > 0) {
+                    $reward->stock--;
+                    $reward->save();
+                    // Vinculamos en la nueva tabla
+                    DB::table('reward_user')->insert([
+                        'reward_id' => $reward->id,
+                        'user_id' => Auth::id(),
+                        'amount' => $contribution->amount,
+                        'contribution_date' => now(),
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
+        });
 
         return redirect()->route('projects.show', $request->project_id)->with('success', 'Contribución creada exitosamente');
     }

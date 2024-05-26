@@ -1,23 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('contributions.search') }}" method="POST">
-    @csrf
+<div class="contributions-container">
     <h1>Contribuciones</h1>
-    <input type="text" name="precio" placeholder="Buscar por precio...">
-    <button type="submit"  >Buscar</button>
-    <input type="text" name="proyecto" placeholder="Buscar por proyecto...">
-    <button type="submit" name="btProducto">Buscar</button>
-</form>
-@foreach ($contributions as $contribution)
-<div>
-    @if ($contribution->user_id === Auth::id())
-        <p>Proyecto: {{ $contribution->Project->title }}</p>
-        <p>Contrubucion: {{ $contribution->amount }}</p>
-        <p>Fecha de contribución: {{ $contribution->contribution_date }}</p>
-    @endif
+    <div class="contributions-form">
+        <div class="form-group">
+            <input type="text" name="precio" placeholder="Buscar por precio...">
+            <button type="submit">Buscar</button>
+        </div>
+        <div class="form-group">
+            <input type="text" name="proyecto" placeholder="Buscar por proyecto...">
+            <button type="submit">Buscar</button>
+        </div>
+    </div>
+    <table class="contributions-table">
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Contribución</th>
+                <th>Fecha de Contribución</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($contributions as $contribution)
+            @if ($contribution->user_id === Auth::id())
+            <tr>
+                <td>{{ $contribution->Project->title }}</td>
+                <td>{{ $contribution->amount }}</td>
+                <td>{{ $contribution->contribution_date->format('Y-m-d') }}</td>
+            </tr>
+            @endif
+            @endforeach
+        </tbody>
+    </table>
 </div>
-    
-@endforeach
-{{ $contributions->links() }} <!-- Agregar enlaces de paginación -->
 @endsection

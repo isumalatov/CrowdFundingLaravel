@@ -1,81 +1,485 @@
-* Estilo general */
+/* Estilo general */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 body, html {
     width: 100%;
     height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: #b87db3; /* Fondo de la sección principal */
+    background-color: #e3f2fd;  /* Fondo azul claro y suave */
+    color: #083358;  /* Contraste con azul oscuro para mejor legibilidad */
 }
 
-/* Estilo del header */
-header {
-    background-color: #8e44ad; /* Color lila */
-    color: white;
-    position: fixed; /* Posicionamiento fijo */
-    top: 0; /* Desde la parte superior */
-    bottom: 0; /* Hasta la parte inferior para llenar la altura */
-    left: 0; /* Alineado a la izquierda */
-    width: 200px; /* Ancho del header */
-    display: flex;
-    flex-direction: column; /* Coloca los elementos uno debajo del otro */
-    justify-content: start; /* Alineación al inicio para empezar desde arriba */
-}
-
-/* Estilo de los enlaces */
-nav a {
-    color: white;
-    display: block; /* Los enlaces se muestran como bloques, uno debajo del otro */
-    text-decoration: none;
-    margin: 10px 0; /* Espacio entre los enlaces */
-    padding: 10px 0; /* Espaciado vertical */
-    text-align: center; /* Texto centrado */
-    transition: background-color 0.3s ease-in-out;
-}
-
-nav a:hover {
-    background-color: #a569bd; /* Un tono más claro para el efecto hover */
-}
-
-/* Estilo del contenido principal */
-main {
-    margin-left: 200px; /* Deja espacio para el header */
+.container {
+    max-width: 360px;
+    margin: 50px auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column; /* Organiza el contenido en columna */
-    align-items: center; /* Centra horizontalmente en el espacio restante */
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
 }
 
-/* Estilo para el título de la sección */
-.section-title {
-    color: white;
-    margin: 20px 0; /* Espacio antes y después del título */
-    font-size: 1.5em; /* Tamaño del texto */
+h2, .form-label, .form-check-label, a {
+    color: #0d47a1;  /* Unificar el color azul oscuro para títulos y etiquetas */
+    text-align: center;
 }
 
-/* Estilo para el campo de búsqueda */
-.search-box {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px; /* Espacio debajo de la caja de búsqueda */
+.form-label, .form-check-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.search-box input[type="text"] {
-    padding: 5px;
+.alert, .alert-danger {
+    padding: 10px;
+    background-color: #ffccbc;
+    color: #c62828;
+    margin-bottom: 20px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #bbdefb;  /* Borde azul claro */
+    border-radius: 4px;
+    background-color: #e7f0fa;  /* Fondo azul muy claro */
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #1565c0;  /* Enfocar con un borde azul más oscuro */
+    background-color: #d6e4f0;  /* Fondo ligeramente más oscuro al enfocar */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #1976d2;
+    color: white;
     border: none;
-    margin-right: 10px; /* Espacio entre el campo de texto y el botón */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.btn-primary:hover {
+    background-color: #1565c0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.search-box input[type="text"], .search-box button {
+    padding: 8px;
+    border-radius: 4px;
+    margin-right: 10px;
 }
 
 .search-box button {
-    padding: 5px 10px;
-    border-radius: 5px;
+    background-color: #3c8d9b;
+    color: white;
     border: none;
     cursor: pointer;
-    background-color: #3c8d9b; /* Color oscuro para el botón */
+}
+
+/* Estilo específico para la lista de proyectos */
+.create-project-button {
+    position: absolute; /* Posicionamiento absoluto dentro del contenedor relativo */
+    top: 20px; /* Espacio desde la parte superior del contenedor */
+    right: 20px; /* Espacio desde la parte derecha del contenedor para no solapar con la barra lateral */
+    z-index: 10; /* Asegura que el botón se sitúe sobre otros elementos si es necesario */
+}
+
+/* Ajustes adicionales para la página de proyectos */
+.project-container {
+    position: relative; /* Establece una referencia de posicionamiento para elementos absolutos dentro de él */
+    padding-left: 20px; /* Añade un espacio adicional para asegurar que el contenido no esté demasiado apretado al sidebar */
+    padding-right: 20px; /* Asegura un espacio adecuado en el lado derecho */
+}
+
+.project-table {
+    width: 100%;
+    margin: 20px auto; /* Centra la tabla horizontalmente */
+    background-color: #f1f8ff; /* Fondo claro para la tabla */
+    border-collapse: collapse; /* Elimina el espacio entre bordes de celdas */
+}
+
+.project-table th, .project-table td {
+    padding: 8px;
+    text-align: center; /* Alineación central para el texto dentro de las celdas */
+    border: 1px solid #bbdefb; /* Borde azul claro */
+}
+
+.project-table th {
+    background-color: #1976d2; /* Azul oscuro para los encabezados */
     color: white;
+}
+
+.project-table td a {
+    color: #0d47a1;
+    text-decoration: none;
+}
+
+.project-table td a:hover {
+    text-decoration: underline;
+}
+
+
+
+.btn-success {
+    background-color: #4caf50; /* Verde para acciones positivas */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-success:hover {
+    background-color: #43a047; /* Verde oscuro al pasar el ratón */
+}
+
+.btn-danger {
+    background-color: #f44336; /* Rojo para botones de acciones negativas, como eliminar */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    color: #1976d2;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.pagination li a:hover {
+    background-color: #bbdefb;
+}
+
+/* Estilo para el encabezado y la navegación */
+header {
+    position: fixed; /* Fija el header al lado izquierdo */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px; /* Ancho del menú */
+    background-color: #1976d2; /* Fondo azul oscuro para el menú */
+    color: white; /* Texto en blanco para mejor contraste */
+    display: flex;
+    flex-direction: column; /* Organiza los enlaces de forma vertical */
+    justify-content: start;
+    padding: 20px;
+    box-shadow: 4px 0 8px rgba(0,0,0,0.1);
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0; /* Espaciado vertical entre enlaces */
+    display: block; /* Hace que cada enlace ocupe toda la línea */
+    transition: background-color 0.3s, padding-left 0.3s;
+}
+
+header nav a:hover {
+    background-color: #1565c0; /* Un azul más oscuro para el efecto hover */
+    padding-left: 20px; /* Desplaza ligeramente el texto a la derecha al pasar el mouse */
+}
+
+main {
+    margin-left: 220px; /* Asegura que el contenido principal no esté oculto tras el menú */
+    padding: 20px;
+}
+
+/* Estilo específico para la sección de contribuciones */
+.contributions-container {
+    position: relative; /* Establece una referencia de posicionamiento para elementos absolutos dentro de él */
+    padding-left: 20px; /* Añade un espacio adicional para asegurar que el contenido no esté demasiado apretado al sidebar */
+    padding-right: 20px; /* Desplazamiento para no solapar el sidebar */
+}
+
+.contributions-form {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio uniformemente */
+    align-items: center; /* Alinea verticalmente */
+    margin-bottom: 20px; /* Espacio antes de la tabla */
+}
+
+.contributions-form input[type="text"] {
+    width: 70%; /* Ajuste para dejar espacio al botón */
+    padding: 8px;
+    border: 1px solid #bbdefb;
+    border-radius: 4px;
+    background-color: #e7f0fa;
+}
+
+.contributions-form button {
+    padding: 8px 15px;
+    background-color: #1976d2; /* Azul principal */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.contributions-form button:hover {
+    background-color: #1565c0; /* Azul oscuro al pasar el ratón */
+}
+
+.contributions-table {
+    width: 100%;
+    background-color: #f1f8ff; /* Fondo claro para la tabla */
+    border-collapse: collapse;
+}
+
+.contributions-table th, .contributions-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #bbdefb;
+}
+
+.contributions-table th {
+    background-color: #1976d2;
+    color: white;
+}
+
+.contributions-table td a {
+    color: #0d47a1;
+    text-decoration: none;
+}
+
+.contributions-table td a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo específico para el botón de contribuir */
+.contribute-button {
+    margin-top: 20px; /* Espacio desde el contenido anterior */
+    display: block; /* Asegura que el botón se muestre en una nueva línea */
+    width: auto; /* Auto-ajuste del ancho según el contenido del botón */
+    text-align: center; /* Centra el botón si es más pequeño que el ancho completo */
+}
+
+.btn-contribute {
+    background-color: #4caf50; /* Verde para acciones positivas */
+    color: white;
+    padding: 10px 20px; /* Ajuste de padding para un mejor aspecto visual */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-block; /* Permite que el botón sea centrado por text-align del contenedor */
+}
+
+.btn-contribute:hover {
+    background-color: #43a047; /* Verde oscuro al pasar el ratón */
+}
+
+/* Ajuste para que el contenido no se solape con el sidebar fijo */
+.main-content {
+    margin-left: 250px; /* Asegura suficiente espacio al lado del sidebar */
+    padding: 20px; /* Padding general para el contenido */
+}
+
+/* Ajustes generales y estilo base */
+.activity-container {
+    max-width: 900px; /* Aumentado para una visualización más amplia */
+    margin: auto; /* Centrado automático en la página */
+    padding: 40px; /* Aumento del padding para un diseño más espacioso */
+    background-color: #ffffff; /* Fondo blanco para contrastar con el fondo general */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados para suavidad */
+}
+
+/* Estilo para los títulos dentro del contenedor */
+.activity-title, .activity-subtitle {
+    color: #0d47a1; /* Azul oscuro para una visualización clara */
+    margin: 20px 0; /* Espacio vertical para separación */
+}
+
+.activity-subtitle {
+    text-align: left; /* Alineación a la izquierda para subtítulos */
+}
+
+/* Mejoras para las alertas */
+.activity-alert-success, .activity-alert-danger {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.activity-alert-success {
+    background-color: #d4edda; /* Verde claro para éxito */
+    color: #155724; /* Verde oscuro para texto */
+}
+
+.activity-alert-danger {
+    background-color: #f8d7da; /* Rojo claro para error */
+    color: #721c24; /* Rojo oscuro para texto */
+}
+
+/* Ajustes para botones */
+.btn-activity-create {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: block; /* Para que ocupe su propia línea */
+    width: auto; /* Auto ajuste al texto */
+    margin: 20px 0; /* Margen superior e inferior */
+    transition: background-color 0.2s;
+}
+
+.btn-activity-create:hover {
+    background-color: #43a047;
+}
+
+.btn-activity-edit, .btn-activity-delete {
+    padding: 5px 10px;
+    margin: 0 5px; /* Margen entre botones */
+}
+
+.btn-activity-edit {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-activity-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-activity-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-activity-delete:hover {
+    background-color: #c82333;
+}
+
+/* Estilo específico para tablas de actividad */
+.activity-table {
+    width: 100%; /* Uso del espacio completo disponible */
+    background-color: #f1f8ff;
+    border-collapse: collapse;
+}
+
+.activity-table th, .activity-table td {
+    padding: 12px; /* Mayor padding para una mejor legibilidad */
+    text-align: left; /* Alineación a la izquierda para las celdas */
+    border: 1px solid #bbdefb;
+}
+
+.activity-table th {
+    background-color: #1976d2;
+    color: white;
+}
+
+.activity-table-link {
+    color: #0d47a1; /* Enlaces dentro de la tabla */
+    text-decoration: none;
+}
+
+.activity-table-link:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes de paginación */
+.activity-pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.activity-pagination li {
+    margin: 0 10px;
+}
+
+.activity-pagination a {
+    color: #1976d2;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.activity-pagination a:hover {
+    background-color: #bbdefb;
+}
+
+.create-activity-button {
+    position: absolute; /* Posicionamiento absoluto dentro del contenedor relativo */
+    top: 75px; /* Espacio desde la parte superior del contenedor */
+    right: 120px; /* Espacio desde la parte derecha del contenedor para no solapar con la barra lateral */
+    z-index: 10; /* Asegura que el botón se sitúe sobre otros elementos si es necesario */
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    color: #083358;
+}
+
+.dashboard-title {
+    color: #0d47a1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navigation-links {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navigation-link {
+    margin-right: 10px;
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.navigation-link:hover {
+    text-decoration: underline;
+    color: #1565c0;
+}
+
+.dashboard-message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
 }

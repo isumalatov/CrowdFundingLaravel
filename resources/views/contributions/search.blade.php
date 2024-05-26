@@ -23,12 +23,11 @@
 
 @if (!$found)
     <div>
-        <p>No existe ninguna contribucion con esas carateristicas.</p>
+        <p>no existe ninguna contribucion con esas caracteristicas</p>
     </div>
-    <form method="GET" action="{{ URL::previous() }}">
-    @csrf
-    <button type="submit">Volver a contribuciones</button>
+    <form method="GET" action="{{URL::previous()}}">
+        @csrf
+        <button type="submit">Volver a contribuciones</button>
     </form>
-
 @endif
 @endsection
