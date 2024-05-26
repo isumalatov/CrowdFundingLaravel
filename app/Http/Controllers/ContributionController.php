@@ -13,7 +13,7 @@ class ContributionController extends Controller
 {
     public function index()
     {
-        $contribution = Contribution::paginate(100);
+        $contribution = Contribution::paginate(4);
         return view('contributions.index',['contributions'=>$contribution]);
         
     }

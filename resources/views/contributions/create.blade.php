@@ -3,7 +3,7 @@
 @section('content')
     <h1>Realizar una Contribución</h1>
 
-    <form action="{{ route('payment.form') }}" method="GET">
+    <form action="{{ route('contributions.store') }}" method="POST">
         @csrf
         <input type="hidden" name="project_id" value="{{ $project_id }}">
         <div class="mb-3">
