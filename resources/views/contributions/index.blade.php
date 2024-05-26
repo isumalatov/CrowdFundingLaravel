@@ -1,18 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+<form action="{{ route('contributions.search') }}" method="POST">
+    @csrf
 <div class="contributions-container">
     <h1>Contribuciones</h1>
     <div class="contributions-form">
         <div class="form-group">
             <input type="text" name="precio" placeholder="Buscar por precio...">
-            <button type="submit">Buscar</button>
+            <button type="submit"  >Buscar</button>
         </div>
         <div class="form-group">
-            <input type="text" name="proyecto" placeholder="Buscar por proyecto...">
-            <button type="submit">Buscar</button>
+        <input type="text" name="proyecto" placeholder="Buscar por proyecto...">
+        <button type="submit" name="btProducto">Buscar</button>
         </div>
     </div>
+    </form>
+    
+    
+    
+    
     <table class="contributions-table">
         <thead>
             <tr>
