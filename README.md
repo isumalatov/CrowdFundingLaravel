@@ -71,3 +71,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 php artisan migrate:refresh --seed
 ## INICIAR SERVIDOR
 php artisan serve
+
+MOCKUPS
+https://app.moqups.com/Qe2V64fjdcl5Dg5w7Gn3l5Db6xWXale7/view/page/a50857bff
